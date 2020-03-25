@@ -45,18 +45,22 @@ function formatQueryParams(params) {
     return queryItems.join('&');
   };
 
+
 function displayResults(responseJson){
     console.log('ran');
+    const contentDiplayed=[];
     responseJson.data.forEach(event=>{
-
-      `<h2>${event.name}</h2>
-      <p>${event.description}</p>
-      <a href='${event.url}'></a>
-      `
-        // console.log(event.name);
-        // console.log(event.description);
-        // console.log(event.url);        
+        console.log('ran');
+        contentDiplayed.push(`
+        <li>${event.name}</li>
+        <p>${event.description}</p>
+        <a href='${event.url}'></a>
+        `);  
   });
+  console.log(contentDiplayed.join(''));
+
+  $('.results').append(`${contentDiplayed.join('')}`)
+  $('.results').removeClass('hidden');
 };
 
 $(watchForm);
