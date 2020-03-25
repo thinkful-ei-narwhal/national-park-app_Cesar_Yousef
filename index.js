@@ -24,7 +24,7 @@ function getParks(searchTerm, maxResults) {
 
     const queryString = formatQueryParams(params)
     let url = searchURL + '?' + queryString;
-    // console.log(url);
+    
 
     fetch(url)
       .then(response => {
@@ -46,20 +46,12 @@ function formatQueryParams(params) {
   };
 
 function displayResults(responseJson){
-    // Full name
-    // Description
-    // Website URL
+    console.log('ran');
     responseJson.data.forEach(event=>{
         console.log(event.name);
+        console.log(event.description);
+        console.log(event.url);        
   });
-    
-    responseJson
-
-    $('#results-list').html(`
-
-    `
-    )
-
 };
 
 $(watchForm);
