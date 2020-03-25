@@ -48,9 +48,14 @@ function formatQueryParams(params) {
 function displayResults(responseJson){
     console.log('ran');
     responseJson.data.forEach(event=>{
-        console.log(event.name);
-        console.log(event.description);
-        console.log(event.url);        
+
+      `<h2>${event.name}</h2>
+      <p>${event.description}</p>
+      <a href='${event.url}'></a>
+      `
+        // console.log(event.name);
+        // console.log(event.description);
+        // console.log(event.url);        
   });
 };
 
