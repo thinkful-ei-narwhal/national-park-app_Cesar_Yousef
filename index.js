@@ -21,16 +21,37 @@ function getParks(searchTerm, maxResults) {
         limit: maxResults,
         api_key: apiKey
       };
-      const queryString = formatQueryParams(params)
-      let url = searchURL + '?' + queryString;
-      console.log(url);
+
+    const queryString = formatQueryParams(params)
+    let url = searchURL + '?' + queryString;
+    // console.log(url);
+
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(response.statusText);
+      })
+      .then(responseJson => displayResults(responseJson))
+      .catch(err => {
+        $('#js-error-message').text(`Something went wrong: ${err.message}`);
+      });
 }
 
 function formatQueryParams(params) {
     const queryItems = Object.keys(params)
       .map(key => `${key}=${params[key]}`)
     return queryItems.join('&');
-  }
+  };
+
+function displayResults(responseJson){
+    $('#results-list').html(`
+    
+    `
+    )
+
+};
 
 
 $(watchForm);
