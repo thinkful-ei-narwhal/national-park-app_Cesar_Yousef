@@ -9,7 +9,6 @@ function watchForm(){
     $('form').submit(event =>{
         event.preventDefault();
         const searchTerm = $('#js-search-term').val().split(' ').join('&stateCode=');
-        console.log(searchTerm);
         const maxResults = $('#js-max-results').val();
         getParks(searchTerm, maxResults);
     })
@@ -47,19 +46,17 @@ function formatQueryParams(params) {
 
 
 function displayResults(responseJson){
-    console.log('ran');
     const contentDiplayed=[];
     responseJson.data.forEach(event=>{
-        console.log('ran');
         contentDiplayed.push(`
         <li>${event.name}</li>
         <p>${event.description}</p>
-        <a href='${event.url}'></a>
+        <a href='${event.url}'>Click to visit their site</a>
         `);  
   });
   console.log(contentDiplayed.join(''));
 
-  $('.results').append(`${contentDiplayed.join('')}`)
+  $('.listResults').html(`${contentDiplayed.join('')}`)
   $('.results').removeClass('hidden');
 };
 
