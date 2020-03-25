@@ -46,12 +46,20 @@ function formatQueryParams(params) {
   };
 
 function displayResults(responseJson){
-    $('#results-list').html(`
+    // Full name
+    // Description
+    // Website URL
+    responseJson.data.forEach(event=>{
+        console.log(event.name);
+  });
     
+    responseJson
+
+    $('#results-list').html(`
+
     `
     )
 
 };
-
 
 $(watchForm);
